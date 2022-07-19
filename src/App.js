@@ -1,24 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+// import logo from './logo.svg';
+// import './App.css';
+import HyperTree from './HyperTree';
 
+const data = './hypertree/public/data/mammalia.d3.json'
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <head>
+        <title>Hyperbolic tree</title>
+        {/* <meta charset="UTF-8" />
+        
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="dcterms.rightsHolder" content="Copyright © 2018 Glatzhofer Michael" /> */}    
+
+      </head>
+      <body>
+        <HyperTree data={data}/>
+      </body>
+    </>
   );
 }
 
