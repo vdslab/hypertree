@@ -1,24 +1,23 @@
-// import logo from './logo.svg';
-// import './App.css';
 import HyperTree from './HyperTree';
+import { useEffect, useState } from 'react';
 
-const data = './hypertree/public/data/mammalia.d3.json'
-function App() {
+export default function App() {
+  const [data, setData] = useState(null)
+  useEffect(()=> {
+    (async () => {
+      const dataPath = 'data/mammalia.d3.json'
+      const dataResponse = await fetch(dataPath)
+      const data = await dataResponse.json()
+      setData(data)
+    })()
+  }, [])
+
+  if (data == null) {
+    return <div>loading</div>;
+  }
   return (
     <>
-      <head>
-        <title>Hyperbolic tree</title>
-        {/* <meta charset="UTF-8" />
-        
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="dcterms.rightsHolder" content="Copyright © 2018 Glatzhofer Michael" /> */}    
-
-      </head>
-      <body>
-        <HyperTree data={data}/>
-      </body>
+      <HyperTree data = {data}/>
     </>
   );
 }
-
-export default App;

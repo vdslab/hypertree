@@ -7,11 +7,9 @@ export default function HyperTree({data}){
             parent: document.body             
         },
         {
-            dataloader: hyt.loaders.fromFile(data),
+            dataloader: hyt.loaders.fromData(data),
             langInitBFS: (ht, n)=> n.precalc.label = n.data.name,
         }
-        
-        // { dataloader: hyt.loaders.generators.nT1 }
     )
     ht.initPromise
         .then(()=> new Promise((ok, err)=> ht.animateUp(ok, err)))            
