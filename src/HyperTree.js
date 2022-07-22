@@ -30,13 +30,20 @@ export default function HyperTree(){
         return <div>loading</div>;
     }
 
-    const ht = new hyt.Hypertree(
+    const ht = new hyt.Hypertree( //cheat sheet https://github.com/glouwa/d3-hypertree#options-cheat-sheet
         {
             parent: document.body             
         },
         {
             dataloader: hyt.loaders.fromData(data),
             langInitBFS: (ht, n)=> n.precalc.label = n.data.data.data.Title,
+            geometry: {
+                layerOptions: {
+                    links: {
+                        linkCurvature: '+'
+                    },
+                },
+            },
             interaction: {
                 onNodeClick: (n, m, l)=> { 
                     console.log(`#onNodeClick: Node=${n}, click coordinates=${m}, source layer=${l}`)
@@ -48,7 +55,6 @@ export default function HyperTree(){
                     ud.view.hypertree.api.toggleSelection(s)
                     ud.view.hypertree.args.interaction.onNodeSelect(s)
                     */
-                    console.log(n.data.data.data.Title)
                 },
 
                 onCenterNodeChange: n=> console.log(`#onCenterNodeChange: Node=${n}`)
