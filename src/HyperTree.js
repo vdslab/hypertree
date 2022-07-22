@@ -10,7 +10,7 @@ export default function HyperTree(){
             const dataPath = 'data/220719v2.json'
             const dataResponse = await fetch(dataPath)
             const data = await dataResponse.json()
-            if (dataPath === 'data/mammalia.d3.json'){
+            if (dataPath === 'data/mammalia.d3.json'){  //this type is stratifyData
                 setData(data)
             }
             else{
